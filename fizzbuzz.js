@@ -1,15 +1,18 @@
 const readline = require("readline");
 
-// 1. Configurando readline para recibir entrada del usuario
+// 1. Configurate readline
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-// 2. Limpiar la consola antes de comenzar la interacción
+// 2. Clear console
 console.clear();
 
-// 3. Función fizzBuzz: lógica principal del FizzBuzz con rangos y divisores personalizados
+// 3. FizzBuzz function main logic with custom ranges and divisors
+
+console.log("Welcome to the FizzBuzz Challenge!");
+
 function fizzBuzz(start, end, fizzDivisor, buzzDivisor) {
     for (let i = start; i <= end; i++) {
         if (i % fizzDivisor === 0 && i % buzzDivisor === 0) {
@@ -24,7 +27,7 @@ function fizzBuzz(start, end, fizzDivisor, buzzDivisor) {
     }
 }
 
-// 4. Función para medir el tiempo de ejecución
+// 4. Function to measure execution time
 function trackExecutionTime(callback) {
     const startTime = Date.now();
     callback();
@@ -32,22 +35,22 @@ function trackExecutionTime(callback) {
     console.log(`Execution time: ${endTime - startTime} ms`);
 }
 
-// 5. Preguntamos al usuario por los rangos y divisores
+// 5. Ask the user for the ranges and divisors
 rl.question("Enter the start of the range: ", (start) => {
     rl.question("Enter the end of the range: ", (end) => {
         rl.question("Enter the divisor for Fizz: ", (fizzDivisor) => {
             rl.question("Enter the divisor for Buzz: ", (buzzDivisor) => {
 
-                // 6. Convertimos las respuestas a números enteros
+                // 6. Convert the answers to numbers
                 start = parseInt(start);
                 end = parseInt(end);
                 fizzDivisor = parseInt(fizzDivisor);
                 buzzDivisor = parseInt(buzzDivisor);
 
-                // 7. Llamamos a trackExecutionTime que ejecuta fizzBuzz con los valores ingresados por el usuario
+                // 7. Call trackExecutionTime with the values entered by the user
                 trackExecutionTime(() => fizzBuzz(start, end, fizzDivisor, buzzDivisor));
 
-                // 8. Cerramos readline para finalizar la interacción
+                // 8. Close readline to finish
                 rl.close();
             });
         });
